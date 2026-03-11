@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Submit Achievement</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h1>Submit Achievement</h1>
+
+<form id="achievementForm">
+
+<input type="text" id="student_name" placeholder="Student Name" required>
+
+<input type="text" id="title" placeholder="Achievement Title" required>
+
+<select id="category">
+<option  selected hidden>Choose Category</option>
+<option>Academic</option>
+<option>Sports</option>
+<option>Cultural</option>
+</select>
+<textarea id="description" placeholder="Description"></textarea>
+<form id="upload_file" action="upload_endpoint" method="POST" enctype="multipart/form-data">
+    <label for="file-upload">Select file to upload:</label>
+    <input type="file" id="file-upload" name="filename">
+    <input type="submit" value="Upload File">
+
+    
+    <button type="submit">Submit</button>
+</form>
+</form>
+
+<script src="script.js"></script>
+
+</body>
+</html>

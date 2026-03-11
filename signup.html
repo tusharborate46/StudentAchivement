@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign Up Page</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #497749;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    background-color: #fcfaf2;
+    padding: 30px;
+    border-radius: 12px;
+    border: 3px solid #000000; 
+    box-shadow: 8px 8px 0px #000000; 
+    width: 350px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #1a1c14;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+div {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #000000; 
+    border-radius: 4px;
+    background-color: #ffffff;
+    font-size: 1rem;
+}
+
+input:focus {
+    outline: none;
+    background-color: #f0f4e8; 
+    border-color: #556b2f; 
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #000000;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: 2px solid #000000; 
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.1s, background-color 0.2s;
+}
+
+button:hover {
+    background-color: #2e3b1a; 
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0); 
+}
+
+p {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.8rem;
+    color: #666;
+}
+</style>
+
+</head>
+<body>
+
+<main>
+<form>
+
+<h1>Please sign up</h1>
+
+<div>
+<label for="fullName">Full Name</label>
+<input type="text" id="fullName" name="fullName" placeholder="Enter your name">
+</div>
+
+<div>
+<label for="email">Email address</label>
+<input type="email" id="email" name="email" placeholder="email@example.com">
+</div>
+
+<div>
+<label for="password">Password</label>
+<input type="password" id="password" name="password">
+</div>
+
+<div>
+<label for="confirmPassword">Confirm Password</label>
+<input type="password" id="confirmPassword" name="confirmPassword">
+</div>
+
+<br>
+
+<button type="submit">Sign up</button>
+
+<p>&copy; 2026–2028</p>
+
+</form>
+</main>
+
+</body>
+</html>
