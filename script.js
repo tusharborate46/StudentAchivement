@@ -60,7 +60,11 @@ row.innerHTML = `
 <td>${item.title}</td>
 <td>${item.category}</td>
 <td>${item.description}</td>
-<td>${item.file_path || "-"}</td>
+<td>
+${item.file_path ? 
+`<a href="http://localhost:5000/${item.file_path}" target="_blank">View</a>`
+: "No File"}
+</td>
 <td ">${item.status || "Pending"}</td>
 <td>
 <button class="approve" onclick="approveAchievement(${item.id})">Approve</button>
@@ -113,24 +117,26 @@ document.getElementById("achievementForm").addEventListener("submit",function(e)
 
 e.preventDefault();
 
-let data = {
- student_name: document.getElementById("student_name").value,
- title: document.getElementById("title").value,
- category: document.getElementById("category").value,
- description: document.getElementById("description").value,
- //file-path: document.GET("file-path").file
-};
+let formData = new FormData();
+
+formData.append("student_name", document.getElementById("student_name").value);
+formData.append("title", document.getElementById("title").value);
+formData.append("category", document.getElementById("category").value);
+formData.append("description", document.getElementById("description").value);
+
+let fileInput = document.getElementById("file_upload");
+
+if(fileInput.files.length > 0){
+formData.append("file_upload", fileInput.files[0]);
+}
 
 fetch("http://localhost:5000/submit",{
- method:"POST",
- headers:{
-  "Content-Type":"application/json"
- },
- body: JSON.stringify(data)
+method:"POST",
+body: formData
 })
 .then(res=>res.text())
 .then(msg=>{
- alert(msg);
+alert(msg);
 });
 
 });
@@ -141,7 +147,7 @@ fetch("http://localhost:5000/submit",{
 //Login sccript
 if(document.getElementById("loginForm")){
 
-document.getElementById("loginForm").addEventListener("submit",function(e){
+document.getElementById("loginForm").addEventListener("submit", function(e){
 
 e.preventDefault();
 
@@ -157,18 +163,22 @@ headers:{
 },
 body: JSON.stringify(data)
 })
-.then(res=>res.json())
-.then(result=>{
+.then(res => res.json())
+.then(result => {
 
 if(result.success){
+
 alert("Login successful");
 
-localStorage.setItem("adminLoggedIn",true);
+// Save login session
+localStorage.setItem("adminLoggedIn", "true");
 
-window.location.href="admin.html";
+// Redirect to admin panel
+window.location.href = "admin.html";
+
 }
 else{
-alert("Invalid login");
+alert("Invalid username or password");
 }
 
 });

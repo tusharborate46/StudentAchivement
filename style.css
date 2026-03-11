@@ -5,7 +5,7 @@ text-align:center;
 }
 
 h1{
-        
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     align-items: center;
     padding: 15px 30px;
     background-color: #497749;
@@ -192,4 +192,12 @@ border-radius:10px;
 
 .statusClass{
     color: yellow;
+}
+
+.file-link{
+background:#0A2540;
+color:white;
+padding:4px 8px;
+border-radius:4px;
+text-decoration:none;
 }

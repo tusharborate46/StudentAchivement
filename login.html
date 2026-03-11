@@ -52,31 +52,36 @@
 <body>
 
 <main class="form-signin">
-  <form>
+  <form id="loginForm">
     
-    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+<h1 class="h3 mb-3 fw-normal">Admin Login</h1>
 
-    <div class="form-floating">
-      <input type="email" class="form-control" id="username" placeholder="name@example.com">
-      <label for="floatingInput">Email address</label>
-    </div>
-    <div class="form-floating">
-      <input type="password" class="form-control" id="password" placeholder="Password">
-      <label for="floatingPassword">Password</label>
-    </div>
+<div class="form-floating">
+<input type="text" class="form-control" id="username" placeholder="Username" required>
+<label>Username</label>
+</div>
 
-    <div class="checkbox mb-3 mt-2 text-start d-flex justify-content-center">
-      <label>
-        <input type="checkbox" value="remember-me"> Remember me
-      </label>
-    </div>
-    
-    <button class="w-100 btn btn-lg btn-dark border border-white" type="submit">Sign in</button>
-   <a href="signup.html">Sign up</a>
+<div class="form-floating">
+<input type="password" class="form-control" id="password" placeholder="Password" required>
+<label>Password</label>
+</div>
 
-    <p class="mt-5 mb-3 text-muted">&copy; 2026–2028</p>
-  </form>
+<div class="checkbox mb-3 mt-2 text-start d-flex justify-content-center">
+<label>
+<input type="checkbox" value="remember-me"> Remember me
+</label>
+</div>
+
+<button class="w-100 btn btn-lg btn-dark border border-white" type="submit">
+Sign in
+</button>
+
+<a href="signup.html">Sign up</a>
+
+<p class="mt-5 mb-3 text-muted">&copy; 2026–2028</p>
+
+</form>
 </main>
-
+<script src="script.js"></script>
 </body>
 </html>
