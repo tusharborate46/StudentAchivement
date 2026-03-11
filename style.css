@@ -158,4 +158,23 @@ margin:auto;
 margin-top:20px;
 }
 
-/* table improvement */
+/* STATISTICS CARDS */
+
+.stats{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+margin-top:20px;
+}
+
+.stats-card{
+background:rgb(0, 0, 0);
+padding:10px;
+border-radius:10px;
+box-shadow:0 3px 10px rgba(96, 75, 75, 0.2);
+width:180px;
+}
+h3,p{
+    color: white;
+}
