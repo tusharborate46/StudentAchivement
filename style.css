@@ -42,13 +42,13 @@ box-shadow:0 0 10px gray;
 }
 
 nav{
-background:#000000;
+
 padding:10px;
 border-radius: 15px;
 }
 
 nav a{
-color:white;
+color:rgb(0, 0, 0);
 margin:15px;
 text-decoration:none;
 font-size:18px;
@@ -143,11 +143,11 @@ font-size:26px;
 }
 
 #login:hover{
-    background-color: rgb(120,60,60);
+    background-color: rgb(105, 86, 86);
 }
 
 nav a:hover{
-color:#6bc16b;
+color:#ffffff;
 }
 
 /* container alignment */
@@ -169,7 +169,7 @@ margin-top:20px;
 }
 
 .stats-card{
-background:rgb(0, 0, 0);
+background:rgb(48, 41, 41);
 padding:10px;
 border-radius:10px;
 box-shadow:0 3px 10px rgba(96, 75, 75, 0.2);
@@ -177,4 +177,19 @@ width:180px;
 }
 h3,p{
     color: white;
+}
+.hero{
+background:#4c177d;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+font-size: 15px;
+color:white;
+padding:20px;
+margin:20px;
+margin-left: 0px;
+margin-right: 0px;
+border-radius:10px;
+}
+
+.statusClass{
+    color: yellow;
 }

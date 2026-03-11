@@ -1,3 +1,9 @@
+<script>
+if(!localStorage.getItem("adminLoggedIn")){
+alert("Please login first");
+window.location.href="login.html";
+}
+</script>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,12 +15,13 @@
 
 <header class="header-bar">
 <h1>Admin Achievement Verification</h1>
-<button id="login" onclick="window.location.href='login.html'">Login</button>
-</header>
-
 <nav>
 <a href="index.html">Home</a>
 </nav>
+<button id="login" onclick="window.location.href='login.html'">Login</button>
+</header>
+
+
 
 <div class="container">
 
