@@ -3,92 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Achievement – Wall of Fame Web Portal</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <style>
-        html, body {
-            height: 100%;
-        }
-
-        body {
-            display: flex;
-            align-items: center;
-            padding-top: 40px;
-            padding-bottom: 40px;
-            background-color: #000000;
-        }
-
-        .form-signin {
-            
-            width: 100%;
-            max-width: 330px;
-            padding: 25px; /* Increased padding slightly for the border */
-            margin: auto;
-            text-align: center;
-            /* CHANGE 1: Added solid white border around the container */
-            border: 2px solid rgb(113, 97, 97);
-            border-radius: 10px; /* Optional: adds rounded corners to the border */
-            background-color: #04724D; /* Optional: semi-transparent white background for better text contrast */
-        }
-
-        .form-signin .form-floating:focus-within {
-            z-index: 2;
-        }
-
-        /* Styling to stack the inputs closely like the image */
-        .form-signin input[type="email"] {
-            margin-bottom: -1px;
-            border-bottom-right-radius: 0;
-            border-bottom-left-radius: 0;
-        }
-
-        .form-signin input[type="password"] {
-            margin-bottom: 10px;
-
-            margin-top: 10px;
-            border-top-left-radius: 0;
-            border-top-right-radius: 0;
-        }
-        .h3{
-            color: white;
-            text-shadow: #000000;
-        }
-    </style>
+    <title>Admin Login | ERP Module</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<main class="form-signin">
-  <form id="loginForm">
-    
-<h1 class="h3 mb-3 fw-normal">Admin Login</h1>
+<header class="navbar">
+    <h1>College ERP Access</h1>
+    <nav><a href="index.html">Back to Home</a></nav>
+</header>
 
-<div class="form-floating">
-<input type="text" class="form-control" id="username" placeholder="Username" required>
-<label>Username</label>
+<div class="container">
+    <div class="form-container" style="max-width: 400px; margin-top: 100px;">
+        <h2>Staff Login</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <label>Username / Staff ID</label>
+                <input type="text" id="username" class="form-control" placeholder="Username" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="password" class="form-control" placeholder="Password" required>
+            </div>
+            
+            <button type="submit" class="btn-submit">Authenticate</button>
+        </form>
+    </div>
 </div>
 
-<div class="form-floating">
-<input type="password" class="form-control" id="password" placeholder="Password" required>
-<label>Password</label>
-</div>
-
-<div class="checkbox mb-3 mt-2 text-start d-flex justify-content-center">
-<label>
-<input type="checkbox" value="remember-me"> Remember me
-</label>
-</div>
-
-<button class="w-100 btn btn-lg btn-dark border border-white" type="submit">
-Sign in
-</button>
-
-<a style="color: rgb(255, 239, 239);" href="signup.html">Sign up</a>
-
-<p class="mt-5 mb-3 text-muted">&copy; 2025-2026</p>
-
-</form>
-</main>
 <script src="script.js"></script>
 </body>
 </html>

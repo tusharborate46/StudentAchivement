@@ -1,57 +1,48 @@
-<script>
-
-if(localStorage.getItem("adminLoggedIn") !== "true"){
-alert("Please login first");
-window.location.href = "login.html";
-}
-</script>
-
 <!DOCTYPE html>
 <html>
 <head>
-<title>Admin Panel</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Admin Panel | ERP Module</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        if(localStorage.getItem("adminLoggedIn") !== "true"){
+            alert("Please login first");
+            window.location.href = "login.html";
+        }
+    </script>
 </head>
-
 <body>
 
-<header class="header-bar">
-<h1>Admin Achievement Verification</h1>
-<nav>
-<a href="index.html">Home</a>
-<button id="login" onclick="window.location.href='login.html'">Login</button>
-</nav>
-
+<header class="navbar">
+    <h1>Admin Achievement Verification</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <button id="login" onclick="window.location.href='login.html'">Logout / Switch User</button>
+    </nav>
 </header>
 
-
-
 <div class="container">
-
-<h2>Pending Achievements</h2>
-
-<table>
-<thead id="tablehead">
-<tr>
-<th>ID</th>
-<th>Student Name</th>
-<th>Title</th>
-<th>Category</th>
-<th>Description</th>
-<th>File Path</th>
-<th>Status</th>
-<th>Verification</th>
-</tr>
-</thead>
-
-<tbody id="tablebody-admin">
-</tbody>
-
-</table>
-
+    <div class="card-table">
+        <h2>Pending Achievements</h2>
+        <table>
+            <thead id="tablehead">
+                <tr>
+                    <th>ID</th>
+                    <th>Student Name</th>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Description</th>
+                    <th>File Path</th>
+                    <th>Status</th>
+                    <th>Verification</th>
+                </tr>
+            </thead>
+            <tbody id="tablebody-admin">
+                </tbody>
+        </table>
+    </div>
 </div>
 
 <script src="script.js"></script>
-
 </body>
 </html>

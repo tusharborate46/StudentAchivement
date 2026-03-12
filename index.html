@@ -1,73 +1,97 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<title>Wall of Fame</title>
-<link rel="stylesheet" href="style.css">
+    <title>Wall of Fame | ERP Module</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<header class="header-bar">
-<h1>Student Achievement Wall-of-Fame</h1>
-<nav>
-<a href="index.html">Home</a>
-<a href="submit.html">Submit Achievement</a>
-<a href="admin.html">Admin Panel</a>
-</nav>
+<header class="navbar">
+    <div>
+    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-mortarboard" viewBox="0 0 16 16">
+     <path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917zM8 8.46 1.758 5.965 8 3.052l6.242 2.913z"/>
+     <path d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466zm-.068 1.873.22-.748 3.496 1.311a.5.5 0 0 0 .352 0l3.496-1.311.22.748L8 12.46z"/>
+</svg>
+        <h1>College ERP | Achievement Portal</h1>
+    </div>
+    
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="submit.html">+ Submit Achievement</a>
+        <a href="admin.html">Admin Panel</a>
+    </nav>
 </header>
 
-<section class="hero">
-    
-<h2>Celebrating Student Excellence</h2>
-<p id="H2">Recognizing achievements in academics, sports and cultural activities.</p>
-</section>
-<section class="stats">
-    <div class="stats-card">
-        <h3>Total Achievement</h3>
-        <p id="totalCount">0</p>
-    </div>
-
-    <div class="stats-card">
-        <h3>Academics</h3>
-        <p id="academicCount">0</p>
-    </div>
-
-    <div class="stats-card">
-        <h3>Sports</h3>
-        <p id="sportsCount">0</p>
-    </div>
-
-    <div class="stats-card">
-        <h3>Cultural</h3>
-        <p id="culturalCount">0</p>
-    </div>
-</section>
-
 <div class="container">
-<table>
-<thead id="tablehead">
-<tr>
-<th>ID</th>
-<th>Student Name</th>
-<th>Title</th>
-<th>Category</th>
-<th>Description</th>
-<th>File</th>
-<th>Status</th>
-</tr>
-</thead>
+    <section class="stats">
+        <div class="stats-card">
+            <h3>Total Achievement</h3>
+            <p id="totalCount">0</p>
+        </div>
+        <div class="stats-card">
+            <h3>Academics</h3>
+            <p id="academicCount">0</p>
+        </div>
+        <div class="stats-card">
+            <h3>Sports</h3>
+            <p id="sportsCount">0</p>
+        </div>
+        <div class="stats-card">
+            <h3>Cultural</h3>
+            <p id="culturalCount">0</p>
+        </div>
+    </section>
 
-<tbody id="tablebody">
-</tbody>
+    <div class="filter-bar">
+        <label><strong>Filter Records:</strong></label>
+        <select id="filterYear" class="form-control" style="width: 200px;">
+            <option value="All">All Years</option>
+            </select>
+        <select id="filterCategory" class="form-control" style="width: 200px;">
+            <option value="All">All Categories</option>
+            <option value="Academic">Academic</option>
+            <option value="Sports">Sports</option>
+            <option value="Cultural">Cultural</option>
+        </select>
+    </div>
 
-</table>
+    <div class="charts-grid">
+        <div class="chart-box">
+            <h3>Overall Progress (Yearly Submissions)</h3>
+            <div style="position: relative; height: 250px;">
+                <canvas id="progressChart"></canvas>
+            </div>
+        </div>
+        <div class="chart-box">
+            <h3 id="pieChartTitle">Category Contribution</h3>
+            <div style="position: relative; height: 250px;">
+                <canvas id="yearlyPieChart"></canvas>
+            </div>
+        </div>
+    </div>
 
-<div class="chart-container">
-    <canvas id="achievementChart"></canvas>
+    <div class="card-table">
+        <h2>Public Wall of Fame</h2>
+        <table>
+            <thead id="tablehead">
+                <tr>
+                    <th>ID</th>
+                    <th>Year</th>
+                    <th>Student Name</th>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Description</th>
+                    <th>Proof</th>
+                </tr>
+            </thead>
+            <tbody id="tablebody">
+                </tbody>
+        </table>
+    </div>
 </div>
 
 <script src="script.js"></script>
-
 </body>
 </html>

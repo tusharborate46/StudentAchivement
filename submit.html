@@ -1,36 +1,64 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Submit Achievement</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Submit Achievement | ERP Module</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<h1>Submit Achievement</h1>
+<header class="navbar">
+    <h1>College ERP | Submit Record</h1>
+    <nav>
+        <a href="index.html">Home</a>
+    </nav>
+</header>
 
-<form id="achievementForm">
+<div class="container">
+    <div class="form-container">
+        <h2>Submit Achievement</h2>
+        
+        <form id="achievementForm">
+            <div class="form-group">
+                <label>Student Name</label>
+                <input type="text" id="student_name" class="form-control" placeholder="Enter Full Name" required>
+            </div>
 
-<input type="text" id="student_name" placeholder="Student Name" required>
+            <div class="form-group">
+                <label>Submission Year</label>
+                <input type="number" id="year" class="form-control" placeholder="e.g., 2024" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Achievement Title</label>
+                <input type="text" id="title" class="form-control" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Category</label>
+                <select id="category" class="form-control" required>
+                    <option value="" selected hidden>Choose Category</option>
+                    <option value="Academic">Academic</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Cultural">Cultural</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Description</label>
+                <textarea id="description" class="form-control" rows="3"></textarea>
+            </div>
 
-<input type="text" id="title" placeholder="Achievement Title" required>
-
-<select id="category">
-<option  selected hidden>Choose Category</option>
-<option>Academic</option>
-<option>Sports</option>
-<option>Cultural</option>
-</select>
-<textarea id="description" placeholder="Description"></textarea>
-<form id="upload_file" action="upload_endpoint" method="POST" enctype="multipart/form-data">
-    <label for="file-upload">Select file to upload:</label>
-    <input type="file" id="file_upload" name="filename">
-    
-    <button type="submit">Submit</button>
-</form>
-</form>
+            <div class="form-group">
+                <label for="file_upload">Proof Document</label>
+                <input type="file" id="file_upload" class="form-control" name="filename">
+            </div>
+            
+            <button type="submit" class="btn-submit">Submit to Data Center</button>
+        </form>
+    </div>
+</div>
 
 <script src="script.js"></script>
-
 </body>
 </html>
