@@ -89,7 +89,10 @@ let pieChartInstance = null;
 let progressChartInstance = null;
 
 function renderYearlyPieChart(filteredData, selectedYear) {
-    const ctx = document.getElementById('yearlyPieChart').getContext('2d');
+    const canvasElement = document.getElementById('yearlyPieChart');
+    const chartContainer = canvasElement.parentElement; // The div holding the canvas
+    const ctx = canvasElement.getContext('2d');
+    
     if (pieChartInstance) pieChartInstance.destroy();
 
     // Change title based on filter
@@ -101,6 +104,35 @@ function renderYearlyPieChart(filteredData, selectedYear) {
         if(item.category === "Sports") sports++;
         if(item.category === "Cultural") cultural++;
     });
+
+    let totalData = academic + sports + cultural;
+
+    // 1. Remove the "No Data" message if it was added previously
+    let existingMsg = document.getElementById("no-pie-data-msg");
+    if (existingMsg) existingMsg.remove();
+
+    // 2. Check if there is no data
+    if (totalData === 0) {
+        canvasElement.style.display = 'none'; // Hide the blank canvas
+
+        // Create a nice "No records" message
+        let msg = document.createElement("div");
+        msg.id = "no-pie-data-msg";
+        msg.style.position = "absolute";
+        msg.style.top = "50%";
+        msg.style.left = "50%";
+        msg.style.transform = "translate(-50%, -50%)";
+        msg.style.color = "gray";
+        msg.style.fontStyle = "italic";
+        msg.innerHTML = "<i class='fa-solid fa-chart-pie mb-2 d-block' style='font-size:24px; color:#ccc;'></i> No records match this filter";
+        msg.style.textAlign = "center";
+        
+        chartContainer.appendChild(msg);
+        return; // Stop here, don't draw the chart
+    }
+
+    // 3. If there IS data, make sure the canvas is visible and draw the chart
+    canvasElement.style.display = 'block';
 
     pieChartInstance = new Chart(ctx, {
         type: 'pie',
@@ -172,8 +204,8 @@ if(document.getElementById("tablebody-admin")) {
                 <td>${item.file_path ? `<a href="http://localhost:5000/${item.file_path}" target="_blank">View</a>` : "No File"}</td>
                 <td>${item.status || "Pending"}</td>
                 <td>
-                    <button class="approve" style="background:green; color:white; border:none; padding:5px; cursor:pointer;" onclick="approveAchievement(${item.id})">Approve</button>
-                    <button class="reject" style="background:red; color:white; border:none; padding:5px; cursor:pointer;" onclick="rejectAchievement(${item.id})">Reject</button>
+                    <button class="approve" style="background:green; color:white; border:none; padding:5px; cursor:pointer; border-radius:5px" onclick="approveAchievement(${item.id})">Approve</button>
+                    <button class="reject" style="background:red; color:white; border:none;border:none; padding:5px; cursor:pointer; border-radius:5px; padding:5px; cursor:pointer;" onclick="rejectAchievement(${item.id})">Reject</button>
                 </td>
             `;
             table.appendChild(row);

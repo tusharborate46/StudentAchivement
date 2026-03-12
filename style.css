@@ -1,4 +1,4 @@
-/* === BASE ERP STYLES === */
+/* base style*/
 :root {
     --erp-blue: #003366;
     --bg-light: #f4f6f9;
@@ -18,7 +18,7 @@ body {
     color: var(--text-dark);
 }
 
-/* === NAVBAR === */
+/*Navbar*/
 .navbar {
     background-color: var(--erp-blue);
     color: white;
@@ -46,14 +46,14 @@ body {
     color: var(--erp-blue);
 }
 
-/* === LAYOUT === */
+/*Layout*/
 .container {
     max-width: 1200px;
     margin: 30px auto;
     padding: 0 20px;
 }
 
-/* === STATS CARDS === */
+/* stat card*/
 .stats {
     display: flex;
     gap: 20px;
@@ -71,7 +71,7 @@ body {
 .stats-card h3 { margin: 0 0 10px 0; font-size: 14px; color: var(--text-muted); }
 .stats-card p { margin: 0; font-size: 24px; font-weight: bold; color: var(--erp-blue); }
 
-/*TABLES */
+/*Tablee*/
 .card-table {
     background: white;
     border: 1px solid var(--border-color);
@@ -120,7 +120,7 @@ tr:hover { background-color: #f1f5f9; }
 
 
 
-/* NEW: FILTERS & CHARTS GRId  */
+/* NEW: FILTErS & CHARTS GRId  */
 .filter-bar {
     background: white;
     padding: 15px 20px;
