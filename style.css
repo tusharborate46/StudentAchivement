@@ -1,6 +1,6 @@
 body{
 font-family:Arial;
-background:#f4f6f9;
+background:#000000;
 text-align:center;
 }
 
@@ -8,7 +8,7 @@ h1{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     align-items: center;
     padding: 15px 30px;
-    background-color: #497749;
+    
     color: white;
     border-radius: 15px;
 
@@ -48,7 +48,8 @@ border-radius: 15px;
 }
 
 nav a{
-color:rgb(0, 0, 0);
+    font-family: 'Times New Roman', Times, serif;
+color:rgb(242, 238, 238);
 margin:15px;
 text-decoration:none;
 font-size:18px;
@@ -69,23 +70,28 @@ table{
 width:100%;
 border-collapse: collapse;
 margin-top:20px;
+background-color: #58cda6;
 }
 
 th{
-background:#000;
-color:white;
+    background-color: #F4F4F9;
+color:rgb(0, 0, 0);
 padding:12px;
+border-color:1px solid black;
+border-bottom:0.5px solid #000000;
 }
 
 td{
+  color: rgb(0, 0, 0);
 padding:10px;
 text-align:center;
-border-bottom:1px solid #ddd;
+border-bottom:0.5px solid #000000;
+border-left:0.5px solid #000000;
+border-right: 0.5px solid black ;
+
 }
 
-tr:nth-child(even){
-background:#f2f2f2;
-}
+
 
 /* heading inside header */
 
@@ -105,7 +111,8 @@ font-size:26px;
             padding: 20px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            border: 1px solid black;
+            border: 1px solid rgb(255, 255, 255);
+            background-color: #04724D;
 }
 
 #category{
@@ -129,7 +136,7 @@ font-size:26px;
     justify-content: space-between;
     align-items: center;
     padding: 15px 30px;
-    background-color: #497749;
+    background-color: #586F7C;
     color: white;
     border-radius: 15px;
 }
@@ -169,21 +176,35 @@ margin-top:20px;
 }
 
 .stats-card{
-background:rgb(48, 41, 41);
+font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+background:#B8DBD9;
 padding:10px;
 border-radius:10px;
 box-shadow:0 3px 10px rgba(96, 75, 75, 0.2);
 width:180px;
 }
+#H2{
+    color: rgb(255, 255, 255);
+      
+}  
+
 h3,p{
-    color: white;
+    color: rgb(0, 0, 0);
+}
+#image{
+    background-image: url("photo.jpg"); 
+background-repeat: no-repeat;            
+background-size: cover;                  
+background-position: center;            
+ background-color: #cccccc;
+
 }
 .hero{
-background:#4c177d;
 font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 font-size: 15px;
-color:white;
-padding:20px;
+color:rgb(255, 248, 248);
+text-shadow: 10px solid black;
+padding:100px;
 margin:20px;
 margin-left: 0px;
 margin-right: 0px;
@@ -200,4 +221,14 @@ color:white;
 padding:4px 8px;
 border-radius:4px;
 text-decoration:none;
+}
+
+.approve{
+   background-color: green;
+   font-family: cursive;
+}
+
+.reject{
+ background-color: red;
+ font-family: cursive;
 }

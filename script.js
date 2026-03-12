@@ -21,7 +21,11 @@ row.innerHTML = `
 <td>${item.title}</td>
 <td>${item.category}</td>
 <td>${item.description}</td>
-<td>${item.file_path || "-"}</td>
+<td>
+${item.file_path ? 
+`<a href="http://localhost:5000/${item.file_path}" target="_blank">View</a>`
+: "No File"}
+</td>
 <td>${item.status || "Approved"}</td>
 `;
 
