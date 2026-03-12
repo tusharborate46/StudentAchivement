@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <title>Wall of Fame</title>
 <link rel="stylesheet" href="style.css">
 </head>
@@ -52,7 +53,7 @@
 <th>Title</th>
 <th>Category</th>
 <th>Description</th>
-<th>File Path</th>
+<th>File</th>
 <th>Status</th>
 </tr>
 </thead>
@@ -62,6 +63,8 @@
 
 </table>
 
+<div class="chart-container">
+    <canvas id="achievementChart"></canvas>
 </div>
 
 <script src="script.js"></script>

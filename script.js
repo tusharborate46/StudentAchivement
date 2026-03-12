@@ -5,12 +5,14 @@ fetch("http://localhost:5000/achievements")
 .then(res => res.json())
 .then(data => {
 
-//main portal body 
+// main portal body
 let table = document.getElementById("tablebody");
+
 let total = 0;
 let academic = 0;
 let sports = 0;
 let cultural = 0;
+
 data.forEach(item => {
 
 let row = document.createElement("tr");
@@ -30,19 +32,57 @@ ${item.file_path ?
 `;
 
 table.appendChild(row);
+
 total++;
 
 if(item.category === "Academic") academic++;
 if(item.category === "Sports") sports++;
 if(item.category === "Cultural") cultural++;
+
 });
+
+// update counters
 document.getElementById("totalCount").innerText = total;
 document.getElementById("academicCount").innerText = academic;
 document.getElementById("sportsCount").innerText = sports;
 document.getElementById("culturalCount").innerText = cultural;
+
+
+// --------- CREATE CHART ---------
+
+
+const chartData = {
+labels: ['Academic', 'Sports', 'Extra-Curricular'],
+datasets: [{
+data: [academic, sports, cultural],
+backgroundColor: ['#3498db', '#e74c3c', '#2ecc71'],
+hoverOffset: 10
+}]
+};
+
+const ctx = document.getElementById('achievementChart').getContext('2d');
+
+new Chart(ctx, {
+type: 'pie',
+data: chartData,
+options: {
+responsive: true,
+plugins: {
+legend: { position: 'bottom' },
+title: {
+display: true,
+text: 'Student Achievement Distribution'
+}
+}
+}
+});
+
 });
 
 }
+
+
+
 
 
 //admin portal body

@@ -232,3 +232,14 @@ text-decoration:none;
  background-color: red;
  font-family: cursive;
 }
+
+
+
+/* PIE Chart */
+
+.chart-container {
+   display: block;
+    width: 400px;  /* Control the size here */
+    height: 400px;
+    margin: auto;
+}
