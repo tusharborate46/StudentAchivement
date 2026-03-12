@@ -62,7 +62,7 @@ function renderTable(data) {
             <td><strong>${item.year || "2024"}</strong></td>
             <td>${item.student_name}</td>
             <td>${item.title}</td>
-            <td><span class="badge bg-primary" style="padding:4px 8px; border-radius:4px; color:white; background:#003366;">${item.category}</span></td>
+           <td><span class="badge bg-primary" style="display: inline-block; width: 90px; text-align: center; padding: 4px 8px; border-radius: 4px; color: white; background: #003366;">${item.category}</span></td>
             <td>${item.description}</td>
             <td>${item.file_path ? `<a href="http://localhost:5000/${item.file_path}" target="_blank">View</a>` : "No File"}</td>
         `;
@@ -152,9 +152,9 @@ function renderOverallProgressChart() {
     });
 }
 
-// ==========================================
+
 // 2. ADMIN PORTAL (ADMIN.HTML) LOGIC
-// ==========================================
+
 if(document.getElementById("tablebody-admin")) {
     fetch("http://localhost:5000/achievements")
     .then(res => res.json())
@@ -168,6 +168,7 @@ if(document.getElementById("tablebody-admin")) {
                 <td>${item.title}</td>
                 <td>${item.category}</td>
                 <td>${item.description}</td>
+                <td>${item.year}</td>
                 <td>${item.file_path ? `<a href="http://localhost:5000/${item.file_path}" target="_blank">View</a>` : "No File"}</td>
                 <td>${item.status || "Pending"}</td>
                 <td>
