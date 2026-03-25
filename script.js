@@ -62,9 +62,15 @@ function renderTable(data) {
             <td><strong>${item.year || "2024"}</strong></td>
             <td>${item.student_name}</td>
             <td>${item.title}</td>
-           <td><span class="badge bg-primary" style="display: inline-block; width: 90px; text-align: center; padding: 4px 8px; border-radius: 4px; color: white; background: #003366;">${item.category}</span></td>
+            <td><span class="badge" style="background: #003366; color: white; padding: 4px 8px; border-radius: 4px;">${item.category}</span></td>
             <td>${item.description}</td>
             <td>${item.file_path ? `<a href="http://localhost:5000/${item.file_path}" target="_blank">View</a>` : "No File"}</td>
+            <td>
+                <button onclick="generateSingleReport(${item.id})" 
+        style="background: #28a745; color: white; border: none; padding: 5px 10px; cursor: pointer; border-radius: 4px;">
+    <i class="fa-solid fa-file-pdf"></i> Report
+</button>
+            </td>
         `;
         table.appendChild(row);
     });
@@ -280,4 +286,155 @@ if(document.getElementById("loginForm")){
             }
         });
     });
+}
+
+
+//EXPORT PDF
+function exportToPDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    // 1. Get the current filters for the title
+    const selectedYear = document.getElementById("filterYear").value;
+    const selectedCat = document.getElementById("filterCategory").value;
+    
+    // 2. Filter the data 
+    const dataToExport = globalAchievements.filter(item => {
+        let itemYear = String(item.year || "2024");
+        let matchesYear = (selectedYear === "All") || (itemYear === selectedYear);
+        let matchesCat = (selectedCat === "All") || (item.category === selectedCat);
+        return matchesYear && matchesCat;
+    });
+
+    // --- UX IMPROVEMENT: Check for empty data ---
+    if (dataToExport.length === 0) {
+        alert("There are no records matching your current filters to export.");
+        return; // Stop the function here so it doesn't download a blank PDF
+    }
+
+    // 3. Add Header Content
+    doc.setFontSize(18);
+    doc.text("Achievements Report", 14, 20);
+    
+    doc.setFontSize(11);
+    doc.setTextColor(100);
+    doc.text(`Filter: Year (${selectedYear}), Category (${selectedCat})`, 14, 30);
+    doc.text(`Total Records: ${dataToExport.length}`, 14, 37);
+
+    // 4. Map data for the table
+    const tableRows = dataToExport.map(item => [
+        item.id,
+        item.year || "2024",
+        item.student_name,
+        item.category,
+        item.title,
+        item.description
+    ]);
+
+    // 5. Generate Table
+    doc.autoTable({
+        startY: 45,
+        head: [['ID', 'Year', 'Student Name', 'Category', 'Title', 'Description']],
+        body: tableRows,
+        theme: 'grid',
+        headStyles: { fillColor: [0, 51, 102] }, 
+        styles: { fontSize: 9 },
+        columnStyles: {
+            5: { cellWidth: 50 } 
+        }
+    });
+
+    // 6. Save File
+    doc.save(`Achievements_Report_${selectedYear}.pdf`);
+
+    // --- UX IMPROVEMENT: Success Alert ---
+    alert(`Success! The bulk report for ${selectedYear} has been downloaded to your PC.`);
+}
+
+// GENERATE REPORT
+function generateSingleReport(itemId) {
+    // Safely look up the item data using its ID
+    const item = globalAchievements.find(a => a.id == itemId);
+    
+    if (!item) {
+        alert("Error: Could not find the details for this achievement.");
+        return;
+    }
+
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    // --- 1. Header & Branding ---
+    doc.setFillColor(0, 51, 102); // Dark Blue
+    doc.rect(0, 0, 210, 40, 'F'); 
+    
+    doc.setTextColor(255, 255, 255);
+    doc.setFontSize(22);
+    doc.setFont("helvetica", "bold");
+    doc.text("ACHIEVEMENT CERTIFICATE", 105, 25, { align: "center" }); // FIX: Changed "C" to "center"
+
+    // --- 2. Record Metadata ---
+    doc.setTextColor(0, 0, 0);
+    doc.setFontSize(10);
+    doc.text(`Report ID: #ACH-${item.id}`, 14, 50);
+    doc.text(`Generated on: ${new Date().toLocaleDateString()}`, 14, 55);
+
+    // --- 3. Main Content Section ---
+    doc.setDrawColor(200, 200, 200);
+    doc.line(14, 60, 196, 60); // Horizontal line
+
+    // Student Name
+    doc.setFontSize(12);
+    doc.setFont("helvetica", "normal");
+    doc.text("This is to certify that", 105, 75, { align: "center" }); // FIX: Changed "C" to "center"
+    
+    doc.setFontSize(20);
+    doc.setFont("helvetica", "bold");
+    doc.text(item.student_name.toUpperCase(), 105, 88, { align: "center" }); // FIX: Changed "C" to "center"
+
+    // Category Badge (Simulated)
+    doc.setDrawColor(0, 51, 102);
+    doc.setFillColor(240, 240, 240);
+    doc.roundedRect(85, 95, 40, 10, 2, 2, 'FD');
+    doc.setFontSize(10);
+    doc.text(item.category, 105, 101, { align: "center" }); // FIX: Changed "C" to "center"
+
+    // Achievement Title
+    doc.setFontSize(14);
+    doc.setFont("helvetica", "bold");
+    doc.text("Achievement Title:", 14, 120);
+    doc.setFont("helvetica", "normal");
+    doc.text(item.title, 14, 128);
+
+    // Description (Multi-line)
+    doc.setFont("helvetica", "bold");
+    doc.text("Details:", 14, 140);
+    doc.setFont("helvetica", "normal");
+    const splitDesc = doc.splitTextToSize(item.description, 180);
+    doc.text(splitDesc, 14, 148);
+
+    // --- 4. Verification Table ---
+    doc.autoTable({
+        startY: 180,
+        head: [['Attribute', 'Details']],
+        body: [
+            ['Academic Year', item.year || "2024"],
+            ['Status', item.status || "Approved"],
+            ['Verification Link', item.file_path ? "Attachment Provided" : "No Attachment"]
+        ],
+        theme: 'striped',
+        headStyles: { fillColor: [0, 51, 102] }
+    });
+
+    // --- 5. Footer / Stamp Area ---
+    const finalY = doc.lastAutoTable.finalY + 30;
+    doc.line(140, finalY, 190, finalY);
+    doc.setFontSize(10);
+    doc.text("Authorized Signature", 165, finalY + 5, { align: "center" }); // FIX: Changed "C" to "center"
+
+    // Save the PDF (this triggers the download)
+    doc.save(`Achievement_${item.student_name.replace(/\s+/g, '_')}_${item.id}.pdf`);
+
+    // --- TRIGGER ALERT MESSAGE HERE ---
+    alert(`Success! The certificate for ${item.student_name} has been downloaded to your PC.`);
 }

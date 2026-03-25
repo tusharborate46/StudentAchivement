@@ -2,9 +2,17 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Wall of Fame | ERP Module</title>
     <link rel="stylesheet" href="style.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    
+    <script>window.jsPDF = window.jspdf.jsPDF;</script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
 </head>
 <body>
 
@@ -55,6 +63,9 @@
             <option value="Sports">Sports</option>
             <option value="Cultural">Cultural</option>
         </select>
+        <button onclick="exportToPDF()" class="btn btn-success">
+    <i class="fa-solid fa-file-pdf"></i> Download PDF Report
+</button>
     </div>
 
     <div class="charts-grid">
@@ -84,6 +95,7 @@
                     <th>Category</th>
                     <th>Description</th>
                     <th>Proof</th>
+                    <th>Generate Report</th>
                 </tr>
             </thead>
             <tbody id="tablebody">
